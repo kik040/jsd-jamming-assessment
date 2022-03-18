@@ -1,5 +1,5 @@
 // TODO: Get Client ID from https://developer.spotify.com/dashboard/ and put it here
-const clientId = 'YOUR SPOTIFY CLIENT ID';
+const clientId = '88f93de7a9024bc390a469d5be5049ca';
 
 const redirectUri = 'http://localhost:3000/';
 const spotifyUrl = `https://accounts.spotify.com/authorize?response_type=token&scope=playlist-modify-public&client_id=${clientId}&redirect_uri=${redirectUri}`;
@@ -21,6 +21,7 @@ const Spotify = {
     } else {
       window.location = spotifyUrl;
     }
+
   },
 
   async search(term) {
@@ -70,7 +71,7 @@ const Spotify = {
             Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify({
-            uris: trackIds.map((id) => 'spotify:track:'.concat(id)),
+             uris: trackIds.map((value) => value.uri),
           }),
         });
       }
